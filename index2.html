@@ -44,12 +44,6 @@
                 <ul></ul>
                 <div class="list-block-label"><img src="img/yahoo-logo.png" height="20"></div>
               </div>
-
-              <div class="list-block songs-list" style="color: #fff;">
-                <ol></ol>
-                <div class="list-block-label"><img src="img/yahoo-logo.png" height="50"></div>
-              </div>
-
             </div>
           </div>
         </div>
@@ -77,12 +71,6 @@
       </div>
     </div>
     <!-- Templates-->
-    <script id="song-item-template" type="template">  
-      {{#each this}}
-        <li data-title="{{title}}" data-artist="{{artist_name}}" class="">{{title}} <span>- {{artist_name}}</span></li>
-      {{/each}}
-    </script>
-
     <script id="search-results-template" type="text/template">
         
       {{#each this}}
@@ -135,14 +123,50 @@
     <!-- Path to Framework7 Library JS-->
     <script type="text/javascript" src="js/framework7.min.js"></script>
     <!-- Path to your app js-->
-
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>  
-
-
-    <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/weather7.js"></script>
-    <script type="text/javascript" src="js/songs.js"></script>
-              
+
+
+
+
+
+
+    <script type="text/javascript" charset="utf-8">
+
+      // Wait for device API libraries to load
+      //
+      document.addEventListener("deviceready", onDeviceReady, false);
+      function onDeviceReady() {
+          console.log("navigator.geolocation works well");
+          alert(navigator.camera);
+          alert('lala');
+          var onSuccess = function(position) {
+              alert('Latitude: '          + position.coords.latitude          + '\n' +
+                    'Longitude: '         + position.coords.longitude         + '\n' +
+                    'Altitude: '          + position.coords.altitude          + '\n' +
+                    'Accuracy: '          + position.coords.accuracy          + '\n' +
+                    'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+                    'Heading: '           + position.coords.heading           + '\n' +
+                    'Speed: '             + position.coords.speed             + '\n' +
+                    'Timestamp: '         + position.timestamp                + '\n');
+          };
+
+          // onError Callback receives a PositionError object
+          //
+          function onError(error) {
+              alert('code: '    + error.code    + '\n' +
+                    'message: ' + error.message + '\n');
+          }
+
+          navigator.geolocation.getCurrentPosition(onSuccess, onError);
+      }
+
+    </script>
+
+
+
+
+
+
 
 
 
